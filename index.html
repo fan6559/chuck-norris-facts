@@ -21,7 +21,7 @@
       <h1 class="title">Chuck Norris Jokes</h1>
       <p>Reload for another joke!</p>
 
-      <div class="content" id="chuck-norris">
+      <div class="content" id="Chuck">
       </div>
     </div>
 
@@ -30,6 +30,28 @@
   <!-- We need to load axios first! -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
   <script>
+      // This function loads pokemon data from the Pokemon API
+function fetchChuckJSON() {
+  // Feel free to download this HTML and edit it, to use another Pokemon ID
+  const Chuckid = 1;
+  const url = `https://api.chucknorris.io/jokes/random`;
+  axios.get(url)
+    .then(function(response) {
+      return response.data; // SUBTLE difference with Fetch: response.data instead of response.json()
+    })
+    .then(function(Chuck) {
+      console.log('data decoded from JSON:',Chuck );
+
+      // Build a block of HTML
+      const ChuckHtml = `
+        <p><strong>${Chuck.value}</strong></p>
+        <img src="${Chuck.icon_url}" />
+      `;
+      document.querySelector('#Chuck').innerHTML = ChuckHtml;
+    });
+}
+
+fetchChuckJSON();
 
   </script>
 </body>
