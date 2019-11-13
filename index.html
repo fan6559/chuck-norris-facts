@@ -20,9 +20,10 @@
     <div class="container">
       <h1 class="title">Chuck Norris Jokes</h1>
       <p>Reload for another joke!</p>
-
+      <button id="myBtn" onclick="fetchChuckJSON();">Change Me</button>
       <div class="content" id="Chuck">
       </div>
+
     </div>
 
   </section>
@@ -47,12 +48,10 @@ function fetchChuckJSON() {
         <p><strong>${Chuck.value}</strong></p>
         <img src="${Chuck.icon_url}" />
       `;
+      
       document.querySelector('#Chuck').innerHTML = ChuckHtml;
     });
 }
-
-fetchChuckJSON();
-
   </script>
 </body>
 
